@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <link rel="icon" type="image/png" href="/img/logo.png">
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="/css/estilo.css">
+        <link rel="stylesheet" th:href="@{/css/estilo.css}">
+        <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Distribuidora de Teja UPVC</title>
+    </head>
+    <body>
+        <header><strong>Distribuidora de Teja UPVC</strong></header>
+        <div class="container">
+            <h1>Tejas termoacústicas UPVC</h1>
+            <p>Resistentes, livianas y con excelente aislamiento.</p>
+            <a href="/catalogo" class="btn btn-primary">Ver catálogo</a>
+            <a href="/contacto" class="btn btn-secondary">Contáctanos</a>
+            <p><a href="/catalogo">Ver catálogo</a> | <a href="/contacto">Contáctanos</a></p>
+        </div>
+        <a th:href="@{/catalogo}">Ver catálogo</a> | <a th:href="@{/contacto}">Contáctanos</a>
+        <section class="muestra">
+            <h2>Productos Destacados</h2>
+            <div class="producto">
+                <img src="/images/teja-blanca.jpg" alt="Teja blanca">
+                <p>Teja Termoacústica UPVC</p>
+            </div>
+            <div class="producto">
+                <img src="/images/tornillo.jpg" alt="Tornillo galvanizado">
+                <p>Tornillos de fijación</p>
+            </div>
+            <a href="/catalogo" class="boton">Ver catálogo completo</a>
+        </section>
+
+        <a class="wa-btn" href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC" target="_blank">W</a>
+    </body>
+</html>

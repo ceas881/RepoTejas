@@ -1,0 +1,126 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 13/10/2025, 11:13:39 a. m.
+    Author     : AMAF
+*/
+
+body {
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: contain; /* o cover si quiere que ocupe toda la pantalla */
+    background-color: #f0f0f0;  /* color de respaldo */
+    border: 2px solid red; /* Para verificar que el CSS se aplica */
+}
+body{
+    font-family:system-ui;
+    margin:0;
+    background:#f8fafc;
+    color:#0f172a
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #004aad;
+    color: white;
+    padding: 1em 0;
+    margin-bottom: 2em;
+}
+
+.catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.producto {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 250px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+}
+
+.producto img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+header{
+    background:#fff;
+    padding:1rem 2rem;
+    box-shadow:0 2px 8px rgba(0,0,0,.06)
+}
+.container{
+    max-width:1040px;
+    margin:2rem auto;
+    padding:0 1rem
+}
+.wa-btn{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    background:#25D366;
+    color:#fff;
+    border-radius:50%;
+    width:56px;
+    height:56px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:24px;
+    box-shadow:0 8px 24px rgba(0,0,0,.2)
+}
+.social-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tiktok-btn:hover {
+    background: #000;
+    color: white;
+}
+
+.instagram-btn:hover {
+    background: #E1306C;
+    color: white;
+}
