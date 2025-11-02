@@ -8,6 +8,10 @@ public class CatalogoController {
 
     @GetMapping("/catalogo")
     public String catalogo() {
-        return "catalogo";
+        return "catalogo"; // Muestra templates/catalogo.html
     }
+    /*@GetMapping("/carrito")
+    public String carrito() {
+        return "carrito"; // Esto busca templates/carrito.html
+    }*/
 }

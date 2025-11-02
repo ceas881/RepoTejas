@@ -26,7 +26,7 @@ public class ProductoController {
   @PutMapping("/{id}") public Producto update(@PathVariable Long id, @RequestBody Producto d){
     return repo.findById(id).map(p -> { p.setNombre(d.getNombre()); p.setDescripcion(d.getDescripcion());
       p.setPrecio(d.getPrecio()); p.setColor(d.getColor()); p.setTipoCresta(d.getTipoCresta());
-      p.setEspesor(d.getEspesor()); p.setImagenUrl(d.getImagenUrl()); return repo.save(p); }).orElse(null);
+      p.setEspesor(d.getEspesor()); p.setImagen_url(d.getImagen_url()); return repo.save(p); }).orElse(null);
   }
   @DeleteMapping("/{id}") public void delete(@PathVariable Long id){ repo.deleteById(id); }
 }

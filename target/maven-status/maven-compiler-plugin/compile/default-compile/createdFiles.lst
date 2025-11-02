@@ -1,3 +1,4 @@
+com\tejaupvc\service\ProductoService.class
 com\tejaupvc\controller\ProductoController.class
 com\tejaupvc\service\CarritoService.class
 com\tejaupvc\DistribuidoraTejaUpvcApplication.class
@@ -8,6 +9,7 @@ com\tejaupvc\model\MensajeContacto.class
 com\tejaupvc\repository\ClienteRepository.class
 com\tejaupvc\repository\ProductoRepository.class
 com\tejaupvc\security\AuthController.class
+com\tejaupvc\controller\IndexController.class
 com\tejaupvc\model\Accesorio.class
 com\tejaupvc\controller\CheckoutController.class
 com\tejaupvc\repository\PedidoRepository.class
@@ -27,6 +29,7 @@ com\tejaupvc\repository\MensajeContactoRepository.class
 com\tejaupvc\model\Pedido.class
 com\tejaupvc\security\AuthResponse.class
 com\tejaupvc\repository\AccesorioRepository.class
+com\tejaupvc\service\ProductoServiceImpl.class
 com\tejaupvc\repository\DetallePedidoRepository.class
 com\tejaupvc\controller\PingController.class
 com\tejaupvc\controller\PedidoController.class

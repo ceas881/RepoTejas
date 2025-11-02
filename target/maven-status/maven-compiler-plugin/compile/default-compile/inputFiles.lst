@@ -20,13 +20,16 @@ C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\c
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\controller\AccesorioController.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\repository\DetallePedidoRepository.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\model\Producto.java
+C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\controller\IndexController.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\DistribuidoraTejaUpvcApplication.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\security\AuthRequest.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\service\PedidoService.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\security\JwtFilter.java
+C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\service\ProductoService.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\model\Pedido.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\repository\MensajeContactoRepository.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\security\AuthController.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\controller\CatalogoController.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\model\Cliente.java
+C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\service\ProductoServiceImpl.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\repository\AccesorioRepository.java

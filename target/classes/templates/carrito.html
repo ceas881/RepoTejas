@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Carrito de Compras</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body>
+        <header>
+            <strong>Distribuidora de Teja UPVC</strong>
+            <div class="botones-header">
+                <a href="/" class="boton-carrito">🏠 Volver al inicio</a>
+                <a href="/catalogo" class="boton-carrito">Ver catálogo</a>
+                <a href="/contacto" class="boton-carrito">Contáctanos</a>
+            </div>
+        </header>
+        <div th:if="${#lists.isEmpty(items)}">
+            <p>🛒 Tu carrito está vacío. Ve al <a href="/catalogo">catálogo</a> para agregar productos.</p>
+        </div>
+
+        <div th:if="${!#lists.isEmpty(items)}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${items}">
+                        <td th:text="${item.producto.nombre}"></td>
+                        <td th:text="${item.cantidad}"></td>
+                        <td th:text="${item.subtotal}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 th:text="'Total: $' + ${total}"></h3>
+
+            <form th:action="@{/carrito/comprar}" method="post">
+                <button type="submit">💳 Comprar</button>
+            </form>
+
+            <form th:action="@{/carrito/vaciar}" method="post">
+                <button type="submit">🧹 Vaciar Carrito</button>
+            </form>
+        </div>
+
+        <a class="wa-btn" href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC" target="_blank">
+            <img src="/img/nino.png" alt="WhatsApp">
+        </a>
+    </body>
+</html>

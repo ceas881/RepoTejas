@@ -1,23 +1,31 @@
 package com.tejaupvc.controller;
 
+import com.tejaupvc.repository.ProductoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PaginaController {
 
-    @GetMapping({"/", "/index"})
-    public String index() {
-        return "index"; // busca src/main/resources/templates/index.html
+    @Autowired
+    private ProductoRepository productoRepo;
+
+    /*@GetMapping("/")
+    public String index(Model model) {
+        model.addAttribute("productos", productoRepo.findAll());
+        return "index";
     }
 
-    //@GetMapping("/catalogo")
-    //public String catalogo() {
-    //    return "catalogo"; // busca templates/catalogo.html
-    //}
-
+    @GetMapping("/catalogo")
+    public String catalogo(Model model) {
+        model.addAttribute("productos", productoRepo.findAll());
+        return "catalogo";
+    }*/
     @GetMapping("/contacto")
     public String contacto() {
-        return "contacto";
+        return "contacto"; // Busca contacto.html en /templates
+
     }
 }

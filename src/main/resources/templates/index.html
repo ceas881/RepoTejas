@@ -1,36 +1,84 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-    <head>
-        <link rel="icon" type="image/png" href="/img/logo.png">
-        <link rel="stylesheet" href="../css/styles.css">
-        <link rel="stylesheet" href="/css/estilo.css">
-        <link rel="stylesheet" th:href="@{/css/estilo.css}">
-        <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Distribuidora de Teja UPVC</title>
-    </head>
-    <body>
-        <header><strong>Distribuidora de Teja UPVC</strong></header>
-        <div class="container">
-            <h1>Tejas termoacústicas UPVC</h1>
-            <p>Resistentes, livianas y con excelente aislamiento.</p>
-            <a href="/catalogo" class="btn btn-primary">Ver catálogo</a>
-            <a href="/contacto" class="btn btn-secondary">Contáctanos</a>
-            <p><a href="/catalogo">Ver catálogo</a> | <a href="/contacto">Contáctanos</a></p>
-        </div>
-        <a th:href="@{/catalogo}">Ver catálogo</a> | <a th:href="@{/contacto}">Contáctanos</a>
-        <section class="muestra">
-            <h2>Productos Destacados</h2>
-            <div class="producto">
-                <img src="/images/teja-blanca.jpg" alt="Teja blanca">
-                <p>Teja Termoacústica UPVC</p>
-            </div>
-            <div class="producto">
-                <img src="/images/tornillo.jpg" alt="Tornillo galvanizado">
-                <p>Tornillos de fijación</p>
-            </div>
-            <a href="/catalogo" class="boton">Ver catálogo completo</a>
-        </section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuidora de Teja UPVC</title>
 
-        <a class="wa-btn" href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC" target="_blank">W</a>
-    </body>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="icon" type="image/png" href="/img/logo.png">
+</head>
+
+<body>
+
+<header>
+    <strong>Distribuidora de Teja UPVC</strong>
+    <div class="botones-header">
+        <a href="/catalogo" class="boton-carrito">Ver catálogo</a>
+        <a href="/contacto" class="boton-carrito">Contáctanos</a>
+        <a href="/carrito" class="boton-carrito">🛒 Ver carrito</a>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Tejas termoacústicas UPVC</h1>
+    <p>Resistentes, livianas y con excelente aislamiento.</p>
+</div>
+
+<section class="scroll-productos">
+  <h2>Productos destacados</h2>
+
+  <div class="carousel-wrapper">
+    <button class="nav-btn left" onclick="scrollLeft()">&#10094;</button>
+
+    <div class="scroll-container" id="slider-productos">
+      <div class="producto-item" 
+           th:each="imagen : ${imagenes}" 
+           onclick="window.location.href='/catalogo'">
+        <img th:src="${imagen}" alt="Producto" class="producto-img">
+        <p th:text="${#strings.substring(imagen, imagen.lastIndexOf('/') + 1)}"></p>
+      </div>
+    </div>
+
+    <button class="nav-btn right" onclick="scrollRight()">&#10095;</button>
+  </div>
+</section>
+
+    <p>"Soluciones integrales en tejas y accesorios para una cobertura duradera y eficiente."
+2. "Diseñamos y fabricamos tejas con tecnología y resistencia para cada tipo de estructura."
+3. "Innovación, precisión y durabilidad en sistemas de techado de alto rendimiento."
+4. "Cada teja, un estándar de calidad; cada techo, una garantía de confianza."
+5. "Desempeño superior y protección garantizada en cada detalle de tu cubierta."
+6. "Eficiencia estructural y estética arquitectónica en cada solución de techado."
+7. "Tejas y accesorios diseñados para resistir, proteger y optimizar tu construcción."
+8. "La unión perfecta entre ingeniería, diseño y durabilidad en techos de alto desempeño."</p>
+
+<script>
+  const slider = document.getElementById('slider-productos');
+
+  function scrollLeft() {
+    slider.scrollBy({ left: -250, behavior: 'smooth' });
+  }
+
+  function scrollRight() {
+    slider.scrollBy({ left: 250, behavior: 'smooth' });
+  }
+
+  // Auto-scroll
+  setInterval(() => {
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+      slider.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      slider.scrollBy({ left: 250, behavior: 'smooth' });
+    }
+  }, 4000);
+</script>
+
+<a class="wa-btn"
+   href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC"
+   target="_blank">
+    <img src="/img/nino.png" alt="WhatsApp">
+</a>
+
+</body>
 </html>

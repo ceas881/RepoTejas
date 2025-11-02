@@ -22,17 +22,20 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author AMAF
  */
 @Entity
-@Table(name="productos")
+@Table(name = "productos")
 public class Producto {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
     private String descripcion;
     private Double precio;
     private String color;
     private String tipoCresta;
     private Double espesor;
-    private String imagenUrl;
+    private String imagen_url;
+
     // Getters y Setters
 
     public Long getId() {
@@ -91,12 +94,12 @@ public class Producto {
         this.espesor = espesor;
     }
 
-    public String getImagenUrl() {
-        return imagenUrl;
+    public String getImagen_url() {
+        return imagen_url;
     }
 
-    public void setImagenUrl(String imagenUrl) {
-        this.imagenUrl = imagenUrl;
+    public void setImagen_url(String imagen_url) {
+        this.imagen_url = imagen_url;
     }
     
 }

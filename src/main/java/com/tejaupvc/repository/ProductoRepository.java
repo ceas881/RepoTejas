@@ -1,21 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.tejaupvc.repository;
 
 import com.tejaupvc.model.Producto;
-// Controladores
-import org.springframework.web.bind.annotation.*;
-// Servicios
-import org.springframework.stereotype.Service;
-// Inyección de dependencias
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-/**
- *
- * @author AMAF
- */
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
+    List<Producto> findTop5ByOrderByIdAsc();
 }
