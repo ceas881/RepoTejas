@@ -13,10 +13,16 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        // Carpeta donde están las imágenes
+
         File folder = new File("src/main/resources/static/images");
+
+        // Extensiones permitidas
         File[] files = folder.listFiles((dir, name) ->
-                name.endsWith("") || name.endsWith(""));
+                name.toLowerCase().endsWith(".jpg") ||
+                name.toLowerCase().endsWith(".jpeg") ||
+                name.toLowerCase().endsWith(".png") ||
+                name.toLowerCase().endsWith(".webp")
+        );
 
         List<String> imagenes = new ArrayList<>();
 
@@ -27,6 +33,7 @@ public class IndexController {
         }
 
         model.addAttribute("imagenes", imagenes);
+
         return "index";
     }
 }

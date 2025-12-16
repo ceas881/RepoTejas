@@ -7,6 +7,7 @@ com\tejaupvc\security\JwtUtil.class
 com\tejaupvc\security\AuthRequest.class
 com\tejaupvc\model\MensajeContacto.class
 com\tejaupvc\repository\ClienteRepository.class
+com\tejaupvc\service\AccesorioServiceImpl.class
 com\tejaupvc\repository\ProductoRepository.class
 com\tejaupvc\security\AuthController.class
 com\tejaupvc\controller\IndexController.class
@@ -19,13 +20,16 @@ com\tejaupvc\controller\ClienteController.class
 com\tejaupvc\controller\ContactoController.class
 com\tejaupvc\controller\CatalogoController.class
 com\tejaupvc\model\Producto.class
+com\tejaupvc\controller\WhatsAppController.class
 com\tejaupvc\controller\AccesorioController.class
 com\tejaupvc\model\CarritoItem.class
 com\tejaupvc\controller\PaginaController.class
+com\tejaupvc\model\ItemCarrito.class
 com\tejaupvc\security\SecurityConfig.class
 com\tejaupvc\controller\CarritoController.class
 com\tejaupvc\model\DetallePedido.class
 com\tejaupvc\repository\MensajeContactoRepository.class
+com\tejaupvc\service\AccesorioService.class
 com\tejaupvc\model\Pedido.class
 com\tejaupvc\security\AuthResponse.class
 com\tejaupvc\repository\AccesorioRepository.class

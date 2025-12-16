@@ -1,84 +1,185 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distribuidora de Teja UPVC</title>
 
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <link rel="icon" type="image/png" href="/img/logo.png">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
+        <title>Teja UPVC Termoacústica | Precios y Venta en Bogotá Colombia</title>
 
-<header>
-    <strong>Distribuidora de Teja UPVC</strong>
-    <div class="botones-header">
-        <a href="/catalogo" class="boton-carrito">Ver catálogo</a>
-        <a href="/contacto" class="boton-carrito">Contáctanos</a>
-        <a href="/carrito" class="boton-carrito">🛒 Ver carrito</a>
-    </div>
-</header>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+        <link rel="icon" type="image/png" href="/img/logo.png">
 
-<div class="container">
-    <h1>Tejas termoacústicas UPVC</h1>
-    <p>Resistentes, livianas y con excelente aislamiento.</p>
-</div>
+        <!-- ⭐ PALABRAS CLAVE SEO -->
+        <meta name="keywords" content="teja UPVC, teja termoacústica, láminas UPVC, teja plástica UPVC,
+              venta de teja UPVC en Bogotá, precios teja UPVC Colombia, accesorios para teja UPVC,
+              cumbreras UPVC, remates UPVC, tapa lateral UPVC, techo UPVC industrial,
+              teja termoacústica Bogotá, distribuidor UPVC Colombia, teja para galpón, 
+              lámina para techo UPVC, tejas anticorrosivas, teja liviana para techo">
 
-<section class="scroll-productos">
-  <h2>Productos destacados</h2>
+        <!-- ⭐ DESCRIPCIÓN SEO -->
+        <meta name="description"
+              content="Distribuidora de Teja UPVC termoacústica en Bogotá, Colombia. Venta de tejas livianas, anticorrosivas y accesorios UPVC al mejor precio. Envíos a nivel nacional.">
 
-  <div class="carousel-wrapper">
-    <button class="nav-btn left" onclick="scrollLeft()">&#10094;</button>
+        <!-- ⭐ SCHEMA JSON-LD PARA GOOGLE (SEO AVANZADO) -->
+        <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Distribuidora de Teja UPVC",
+            "image": "/img/logo.png",
+            "url": "https://tusitio.com",
+            "telephone": "+57 321 353 7875",
+            "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bogotá, Colombia",
+            "addressLocality": "Bogotá",
+            "addressRegion": "Cundinamarca",
+            "addressCountry": "CO"
+            },
+            "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 4.7110,
+            "longitude": -74.0721
+            },
+            "openingHours": [
+            "Mo-Fr 08:00-18:00",
+            "Sa 08:00-14:00"
+            ],
+            "priceRange": "$$",
+            "description": "Venta de teja UPVC termoacústica, accesorios y cubiertas para construcción en Bogotá, Colombia.",
+            "sameAs": [
+            "https://www.facebook.com",
+            "https://www.instagram.com"
+            ]
+            }
+        </script>
+    </head>
 
-    <div class="scroll-container" id="slider-productos">
-      <div class="producto-item" 
-           th:each="imagen : ${imagenes}" 
-           onclick="window.location.href='/catalogo'">
-        <img th:src="${imagen}" alt="Producto" class="producto-img">
-        <p th:text="${#strings.substring(imagen, imagen.lastIndexOf('/') + 1)}"></p>
-      </div>
-    </div>
+    <body>
 
-    <button class="nav-btn right" onclick="scrollRight()">&#10095;</button>
-  </div>
-</section>
+        <header th:replace="fragments/header :: header">
+            <strong>Distribuidora de Teja UPVC</strong>
+        </header>
 
-    <p>"Soluciones integrales en tejas y accesorios para una cobertura duradera y eficiente."
-2. "Diseñamos y fabricamos tejas con tecnología y resistencia para cada tipo de estructura."
-3. "Innovación, precisión y durabilidad en sistemas de techado de alto rendimiento."
-4. "Cada teja, un estándar de calidad; cada techo, una garantía de confianza."
-5. "Desempeño superior y protección garantizada en cada detalle de tu cubierta."
-6. "Eficiencia estructural y estética arquitectónica en cada solución de techado."
-7. "Tejas y accesorios diseñados para resistir, proteger y optimizar tu construcción."
-8. "La unión perfecta entre ingeniería, diseño y durabilidad en techos de alto desempeño."</p>
+        <!-- ============================= -->
+        <!-- ⭐ CONTENIDO PRINCIPAL        -->
+        <!-- ============================= -->
 
-<script>
-  const slider = document.getElementById('slider-productos');
+        <div class="container">
+            <h1>Tejas termoacústicas UPVC</h1>
+            <p>Resistentes, livianas y con excelente aislamiento térmico y acústico.</p>
+        </div>
 
-  function scrollLeft() {
-    slider.scrollBy({ left: -250, behavior: 'smooth' });
-  }
+        <!-- ============================= -->
+        <!-- ⭐ CARRUSEL DE PRODUCTOS      -->
+        <!-- ============================= -->
 
-  function scrollRight() {
-    slider.scrollBy({ left: 250, behavior: 'smooth' });
-  }
+        <section class="scroll-productos">
+            <h2>Productos destacados</h2>
 
-  // Auto-scroll
-  setInterval(() => {
-    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
-      slider.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      slider.scrollBy({ left: 250, behavior: 'smooth' });
-    }
-  }, 4000);
-</script>
+            <div class="carousel-wrapper">
 
-<a class="wa-btn"
-   href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC"
-   target="_blank">
-    <img src="/img/nino.png" alt="WhatsApp">
-</a>
+                <button class="nav-btn left" onclick="scrollLeft()">&#10094;</button>
 
-</body>
+                <div class="scroll-container" id="slider-productos">
+                    <div class="producto-item"
+                         th:each="imagen : ${imagenes}"
+                         onclick="window.location.href = '/catalogo'">
+
+                        <img th:src="${imagen}" alt="Producto UPVC" class="producto-img">
+
+                        <!--p th:text="${#strings.substring(imagen, imagen.lastIndexOf('/') + 1)}"></p-->
+                        <!-- Mostrar nombre sin extensión -->
+                        <p th:text="${#strings.substring(imagen, imagen.lastIndexOf('/') + 1, imagen.lastIndexOf('.'))}">
+                            Nombre Producto
+                        </p>
+                    </div>
+                </div>
+
+                <button class="nav-btn right" onclick="scrollRight()">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- ============================= -->
+        <!-- ⭐ FRASES SEO (copywriting)   -->
+        <!-- ============================= -->
+
+        <p>
+            “Soluciones integrales en tejas y accesorios para cubiertas duraderas y eficientes.”<br>
+            “Tejas fabricadas con tecnología avanzada para mayor resistencia.”<br>
+            “Innovación y desempeño en sistemas de techado termoacústico.”<br>
+            “Cada teja, un estándar de calidad y durabilidad.”<br>
+            “Protección garantizada para cubiertas de alto rendimiento.”
+        </p>
+
+        <!-- ============================= -->
+        <!-- ⭐ SCRIPTS                    -->
+        <!-- ============================= -->
+
+        <script>
+            const slider = document.getElementById('slider-productos');
+            const carouselWrapper = document.querySelector('.carousel-wrapper');
+
+            // Verificar si hay scroll horizontal
+            function checkScroll() {
+                if (slider.scrollWidth <= slider.clientWidth) {
+                    carouselWrapper.classList.add('no-scroll');
+                } else {
+                    carouselWrapper.classList.remove('no-scroll');
+                }
+            }
+
+            // Verificar al cargar y al redimensionar
+            window.addEventListener('load', checkScroll);
+            window.addEventListener('resize', checkScroll);
+
+            function scrollLeft() {
+                slider.scrollBy({left: -250, behavior: 'smooth'});
+            }
+
+            function scrollRight() {
+                slider.scrollBy({left: 250, behavior: 'smooth'});
+            }
+
+            // Auto-scroll cada 5 segundos (solo si hay elementos)
+            let autoScrollInterval;
+
+            function startAutoScroll() {
+                if (slider.children.length > 0) {
+                    autoScrollInterval = setInterval(() => {
+                        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+                            slider.scrollTo({left: 0, behavior: 'smooth'});
+                        } else {
+                            slider.scrollBy({left: 250, behavior: 'smooth'});
+                        }
+                    }, 5000);
+                }
+            }
+
+            function stopAutoScroll() {
+                clearInterval(autoScrollInterval);
+            }
+
+            // Pausar auto-scroll cuando el usuario interactúa
+            slider.addEventListener('mouseenter', stopAutoScroll);
+            slider.addEventListener('mouseleave', startAutoScroll);
+            slider.addEventListener('touchstart', stopAutoScroll);
+            slider.addEventListener('touchend', () => setTimeout(startAutoScroll, 3000));
+
+            // Iniciar auto-scroll
+            startAutoScroll();
+        </script>
+
+        <!-- ============================= -->
+        <!-- ⭐ BOTÓN DE WHATSAPP          -->
+        <!-- ============================= -->
+
+        <a class="wa-btn"
+           href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC"
+           target="_blank">
+            <img src="/img/nino.png" alt="WhatsApp">
+        </a>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
 </html>

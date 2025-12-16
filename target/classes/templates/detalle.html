@@ -14,14 +14,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <header>
             <strong>Distribuidora de Teja UPVC</strong>
             <div class="botones-header">
-            <a href="/catalogo" class="boton-carrito">Ver catálogo</a>
-            <a href="/contacto" class="boton-carrito">Contáctanos</a>
-            <a href="/carrito" class="boton-carrito">🛒 Ver carrito</a>
+                <a href="/catalogo" class="boton-carrito">Ver catálogo</a>
+                <a href="/contacto" class="boton-carrito">Contáctanos</a>
+                <a href="/carrito" class="boton-carrito">🛒 Ver carrito</a>
             </div>
         </header>
         <div>TODO write content</div>
-        <a class="wa-btn" href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC" target="_blank">
-            <img src="/img/nino.png" alt="WhatsApp">
+        <a class="wa-btn"
+           href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC"
+           target="_blank"
+           rel="noopener">
+            <img th:src="@{/img/nino.png}" alt="WhatsApp">
         </a>
+        
+        <footer th:replace="fragments/footer :: footer"></footer>
     </body>
 </html>

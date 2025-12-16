@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+<!-- Fragmento reutilizable -->
+<header th:fragment="header">
+    <div class="header-container">
+        <a href="/">
+            <img src="/img/logo.png" alt="Logo" class="logo-header">
+        </a>
+
+        <strong>Distribuidora de Teja UPVC</strong>
+
+        <div class="botones-header">
+            <a href="/catalogo" class="boton-carrito">Catálogo</a>
+            <a href="/carrito" class="boton-carrito">Carrito</a>
+            <a href="/contacto" class="boton-carrito">Contacto</a>
+        </div>
+    </div>
+</header>
+
+</body>
+</html>

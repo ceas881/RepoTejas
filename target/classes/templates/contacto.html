@@ -1,43 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
     <head>
-        <link rel="icon" type="image/png" href="/img/logo.png">
-        <link rel="stylesheet" href="/css/styles.css">
-        <meta charset="UTF-8">
-        <title>Contáctanos</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Contacto | Teja UPVC Bogotá</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+        <link rel="icon" href="/img/logo.png">
+
+        <meta name="keywords" content="contacto teja UPVC Bogotá, cotización teja UPVC">
+        <meta name="description" content="Contáctanos para cotizaciones de teja UPVC termoacústica en Bogotá.">
     </head>
     <body>
-        <header>
+        <header th:replace="fragments/header :: header">
             <strong>Distribuidora de Teja UPVC</strong>
-            <div class="botones-header">
-                <a href="/" class="boton-carrito">🏠 Volver al inicio</a>
-                <a href="/catalogo" class="boton-carrito">Ver catálogo</a>
-                <a href="/carrito" class="boton-carrito">🛒 Ver carrito</a>
-            </div>
         </header>
+
         <div class="container">
             <h1>Contáctanos</h1>
-            <p>Para más información, cotizaciones o pedidos, comunícate con nosotros:</p>
-            <div class="social-buttons">
-                <a href="https://www.tiktok.com/@distri.teja.upvc" class="social-btn tiktok-btn" target="_blank">
-                    <i class="fab fa-tiktok"></i>
-                    TikTok
-                </a>
+            <p>Para cotizaciones y pedidos: </p>
 
-                <a href="https://www.instagram.com/distribuidora_de_teja_upvc" class="social-btn instagram-btn" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    Instagram
-                </a>
+            <p>📞 <a href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC" target="_blank">321 353 7875 (WhatsApp)</a></p>
+            <p>✉️ <a href="mailto:distribuidoradetejaupvc1@gmail.com">distribuidoradetejaupvc1@gmail.com</a></p>
+
+            <div class="social-buttons">
+                <a href="https://www.instagram.com/distribuidora_de_teja_upvc" class="social-btn" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@distri.teja.upvc" class="social-btn" target="_blank">TikTok</a>
             </div>
-            <h2>✉️ Correo</h2>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=distribuidoradetejaupvc1@gmail.com&su=Asunto&body=Mensaje">distribuidoradetejaupvc1@gmail.com</a>
-            <h2>📞 Teléfono y WhatsApp</h2>
-            <a href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC">3213537875</a>
-            <h2>📍 Lugar</h2>
-            <p>Bogotá – Colombia</p>
         </div>
-        <a class="wa-btn" href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC" target="_blank">
-            <img src="/img/nino.png" alt="WhatsApp">
+
+        <a class="wa-btn"
+           href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC"
+           target="_blank"
+           rel="noopener">
+            <img th:src="@{/img/nino.png}" alt="WhatsApp">
         </a>
+        
+        <footer th:replace="fragments/footer :: footer"></footer>
+        
     </body>
-</html>
+</html> 

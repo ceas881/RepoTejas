@@ -1,51 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.tejaupvc.controller;
 
 import com.tejaupvc.model.Cliente;
 import com.tejaupvc.model.DetallePedido;
 import com.tejaupvc.model.Pedido;
-import com.tejaupvc.repository.AccesorioRepository;
-import com.tejaupvc.repository.ClienteRepository;
-import com.tejaupvc.repository.DetallePedidoRepository;
-import com.tejaupvc.repository.PedidoRepository;
-import com.tejaupvc.repository.ProductoRepository;
+import com.tejaupvc.repository.*;
 
 import java.util.List;
 import java.util.Map;
 
-// Controladores
 import org.springframework.web.bind.annotation.*;
-// Inyección de dependencias
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- *
- * @author AMAF
- */
 @RestController
 @RequestMapping("/api/pedidos")
 @CrossOrigin
 public class PedidoController {
 
     @Autowired
-    PedidoRepository pedidoRepo;
+    private PedidoRepository pedidoRepo;
 
     @Autowired
-    ClienteRepository clienteRepo;
+    private ClienteRepository clienteRepo;
 
     @Autowired
-    ProductoRepository prodRepo;
+    private ProductoRepository prodRepo;
 
     @Autowired
-    AccesorioRepository accRepo;
+    private AccesorioRepository accRepo;
 
     @Autowired
-    DetallePedidoRepository detRepo;
+    private DetallePedidoRepository detRepo;
 
-    // 👇 NUEVO: GET para ver desde navegador
     @GetMapping
     public List<Pedido> listarPedidos() {
         return pedidoRepo.findAll();
@@ -53,10 +38,16 @@ public class PedidoController {
 
     @PostMapping
     public Pedido crear(@RequestBody Map<String, Object> body) {
-        var cdata = (Map<String, Object>) body.get("cliente");
-        var items = (List<Map<String, Object>>) body.get("items");
+
+        if (body == null || !body.containsKey("cliente") || !body.containsKey("items")) {
+            throw new IllegalArgumentException("Datos incompletos del pedido.");
+        }
+
+        Map<String, Object> cdata = (Map<String, Object>) body.get("cliente");
+        List<Map<String, Object>> items = (List<Map<String, Object>>) body.get("items");
         double total = Double.parseDouble(body.getOrDefault("total", 0).toString());
 
+        // Crear cliente
         Cliente c = new Cliente();
         c.setNombre((String) cdata.get("nombre"));
         c.setTelefono((String) cdata.get("telefono"));
@@ -64,12 +55,15 @@ public class PedidoController {
         c.setDireccion((String) cdata.get("direccion"));
         c = clienteRepo.save(c);
 
+        // Crear pedido
         Pedido p = new Pedido();
         p.setCliente(c);
         p.setTotal(total);
         p = pedidoRepo.save(p);
 
-        for (var it : items) {
+        // Agregar detalles del pedido
+        for (Map<String, Object> it : items) {
+
             DetallePedido d = new DetallePedido();
             d.setPedido(p);
 
@@ -85,6 +79,7 @@ public class PedidoController {
 
             d.setCantidad(Integer.valueOf(it.getOrDefault("cantidad", 1).toString()));
             d.setPrecioUnitario(Double.valueOf(it.getOrDefault("precioUnitario", 0).toString()));
+
             detRepo.save(d);
         }
 

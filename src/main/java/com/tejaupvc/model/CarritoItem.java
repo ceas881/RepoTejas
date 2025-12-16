@@ -1,61 +1,32 @@
 package com.tejaupvc.model;
 
-// Controladores
-import org.springframework.web.bind.annotation.*;
-// Servicios
-import org.springframework.stereotype.Service;
-// Inyección de dependencias
-import org.springframework.beans.factory.annotation.Autowired;
-
 public class CarritoItem {
-    private Long productoId;
+    private Long id;
     private String nombre;
     private int cantidad;
-    private double precioUnitario;
+    private double precio;
+    private String tipo; // "producto" o "accesorio"
+    private String imagen_Url;
 
-    public CarritoItem(Long productoId, String nombre, int cantidad, double precioUnitario) {
-        this.productoId = productoId;
+    public CarritoItem() {}
+
+    public CarritoItem(Long id, String nombre, int cantidad, double precio, String tipo, String imagen_Url) {
+        this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
+        this.precio = precio;
+        this.tipo = tipo;
+        this.imagen_Url = imagen_Url;
     }
 
-    public double getSubtotal() {
-        return cantidad * precioUnitario;
-    }
+    public Long getId() { return id; }
+    public String getNombre() { return nombre; }
+    public int getCantidad() { return cantidad; }
+    public void setCantidad(int cantidad) { this.cantidad = cantidad; }
+    public double getPrecio() { return precio; }
+    public String getTipo() { return tipo; }
+    public String getImagen_Url() { return imagen_Url; }
 
-    // Getters y Setters
-
-    public Long getProductoId() {
-        return productoId;
-    }
-
-    public void setProductoId(Long productoId) {
-        this.productoId = productoId;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public double getPrecioUnitario() {
-        return precioUnitario;
-    }
-
-    public void setPrecioUnitario(double precioUnitario) {
-        this.precioUnitario = precioUnitario;
-    }
+    public double getSubtotal() { return precio * cantidad; }
     
 }

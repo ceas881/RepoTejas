@@ -1,32 +1,80 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.tejaupvc.controller;
 
 import com.tejaupvc.model.Producto;
-import com.tejaupvc.repository.ProductoRepository;
-import java.util.List;
-// Controladores
-import org.springframework.web.bind.annotation.*;
-// Servicios
-import org.springframework.stereotype.Service;
-// Inyección de dependencias
+import com.tejaupvc.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
-/**
- *
- * @author AMAF
- */
-@RestController @RequestMapping("/api/productos") @CrossOrigin
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/productos")
 public class ProductoController {
-  @Autowired ProductoRepository repo;
-  @GetMapping public List<Producto> all(){ return repo.findAll(); }
-  @PostMapping public Producto create(@RequestBody Producto p){ return repo.save(p); }
-  @GetMapping("/{id}") public Producto one(@PathVariable Long id){ return repo.findById(id).orElse(null); }
-  @PutMapping("/{id}") public Producto update(@PathVariable Long id, @RequestBody Producto d){
-    return repo.findById(id).map(p -> { p.setNombre(d.getNombre()); p.setDescripcion(d.getDescripcion());
-      p.setPrecio(d.getPrecio()); p.setColor(d.getColor()); p.setTipoCresta(d.getTipoCresta());
-      p.setEspesor(d.getEspesor()); p.setImagen_url(d.getImagen_url()); return repo.save(p); }).orElse(null);
-  }
-  @DeleteMapping("/{id}") public void delete(@PathVariable Long id){ repo.deleteById(id); }
+    
+    @Autowired
+    private ProductoService productoService;
+    
+    @GetMapping
+    public String listarProductos(Model model) {
+        List<Producto> productos = productoService.findAll();
+        model.addAttribute("productos", productos);
+        return "productos/lista"; // Asegúrate de que esta vista exista
+    }
+    
+    @GetMapping("/{id}")
+    public String verProducto(@PathVariable Long id, Model model) {
+        Producto producto = productoService.getProductoById(id);
+        if (producto != null) {
+            model.addAttribute("producto", producto);
+            return "productos/detalle"; // Asegúrate de que esta vista exista
+        }
+        return "redirect:/productos";
+    }
+    
+    @GetMapping("/filtrar")
+    public String filtrarProductos(@RequestParam(required = false) String color,
+                                  @RequestParam(required = false) String tipoCresta,
+                                  Model model) {
+        List<Producto> productos = productoService.findAll();
+        
+        // Filtrar por color si se proporciona
+        if (color != null && !color.isEmpty()) {
+            productos = productos.stream()
+                .filter(p -> p.getColor() != null && color.equalsIgnoreCase(p.getColor()))
+                .toList();
+        }
+        
+        // Filtrar por tipo de cresta si se proporciona
+        if (tipoCresta != null && !tipoCresta.isEmpty()) {
+            productos = productos.stream()
+                .filter(p -> p.getTipoCresta() != null && tipoCresta.equalsIgnoreCase(p.getTipoCresta()))
+                .toList();
+        }
+        
+        model.addAttribute("productos", productos);
+        model.addAttribute("color", color);
+        model.addAttribute("tipoCresta", tipoCresta);
+        return "productos/lista";
+    }
+    
+    // MÉTODO PARA AGREGAR PRODUCTOS AL CARRITO (si no tienes uno separado)
+    @PostMapping("/agregar-al-carrito/{id}")
+    public String agregarAlCarrito(@PathVariable Long id,
+                                  @RequestParam(defaultValue = "1") int cantidad) {
+        // Este método debería estar en un CarritoController separado
+        // Por ahora lo dejamos aquí como referencia
+        Producto producto = productoService.getProductoById(id);
+        
+        if (producto != null) {
+            // Aquí deberías llamar a tu CarritoService
+            // Ejemplo: carritoService.agregarProducto(producto, cantidad);
+            System.out.println("Agregando al carrito: " + producto.getNombre() + 
+                             ", Color: " + producto.getColor() + 
+                             ", Cantidad: " + cantidad);
+        }
+        
+        return "redirect:/catalogo"; // Redirigir al catálogo o donde corresponda
+    }
 }

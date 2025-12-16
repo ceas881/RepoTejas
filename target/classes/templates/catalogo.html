@@ -1,211 +1,105 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
     <head>
-        <meta charset="UTF-8">
-        <title>Catálogo - Distribuidora Teja UPVC</title>
-        <link rel="icon" type="image/png" href="/img/logo.png">
-        <link rel="stylesheet" href="/css/styles.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Catálogo | Teja UPVC Bogotá</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+        <link rel="icon" th:href="@{/img/logo.png}">
+
+        <meta name="keywords" content="teja UPVC, teja termoacústica, venta teja UPVC Bogotá, accesorios UPVC">
+        <meta name="description" content="Catálogo de tejas UPVC termoacústicas y accesorios — Distribuidora Bogotá.">
     </head>
+
     <body>
-        <header>
-            <div class="botones-header">
-                <a href="/" class="boton-carrito">🏠 Volver al inicio</a>
-                <a href="/contacto" class="boton-carrito">Contáctanos</a>
-                <a href="/carrito" class="boton-carrito">
-                    🛍️ Ver carrito 
-                    <span class="contador" th:text="${carrito != null} ? ${#lists.size(carrito)} : 0">0</span>
-                </a>
 
-            </div>
+        <header th:replace="fragments/header :: header">
+            <strong>Distribuidora de Teja UPVC</strong>
         </header>
-        <div th:each="producto : ${productos}" th:attr="id=${producto.id}" class="producto">
-            <!-- contenido del producto -->
-        </div>
 
-        <h1>Catálogo de Productos</h1>
-        <section class="catalogo">
-            <div class="catalogo">
-                <h2>TEJAS</h2>
-                <br/>
-                <div class="producto">
-                    <img src="/images/teja-naranja.jpg" alt="Teja blanca UPVC">
-                    <h3>Teja Termoacústica Naranja</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <!-- 🔹 BOTÓN PARA AGREGAR AL CARRITO -->
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <!-- 🔹 BOTÓN PARA COMPRAR AHORA -->
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="producto">
-                    <img src="/images/teja-roja.jpg" alt="Teja blanca UPVC">
-                    <h3>Teja Termoacústica Roja</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="producto">
-                    <img src="/images/teja-azul.jpg" alt="Teja blanca UPVC">
-                    <h3>Teja Termoacústica Azul</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="producto">
-                    <img src="/images/teja-verde.jpg" alt="Teja blanca UPVC">
-                    <h3>Teja Termoacústica Verde</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="producto">
-                    <img src="/images/teja-blanca.jpg" alt="Teja blanca UPVC">
-                    <h3>Teja Termoacústica Blanca</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <br/>
-                <h2>CAPELOTE</h2>
-                <br/>
-                <div class="producto">
-                    <img src="/images/Capelote-blanco.jpg" alt="Teja blanca UPVC">
-                    <h3>Capelote Blaco</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="producto">
-                    <img src="/images/Capelote-verde.jpg" alt="Teja blanca UPVC">
-                    <h3>Capelote Verde</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="producto">
-                    <img src="/images/Capelote-terracota.jpg" alt="Teja blanca UPVC">
-                    <h3>Capelote Terracota</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="producto">
-                    <img src="/images/Capelote-rojo.jpg" alt="Teja blanca UPVC">
-                    <h3>Capelote Rojo</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="producto">
-                    <img src="/images/Capelote-naranja.jpg" alt="Teja blanca UPVC">
-                    <h3>Capelote Naranja</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="producto">
-                    <img src="/images/Capelote-azul.jpg" alt="Teja blanca UPVC">
-                    <h3>Capelote Azul</h3>
-                    <p><strong>Medidas:</strong> 1.10m x 2.44m</p>
-                    <p><strong>Material:</strong> UPVC termoacústico</p>
-                    <p><strong>Precio:</strong> $85,000 COP</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <br/>
-                <h2>TORNILLOS</h2>
-                <br/>
-                <div class="producto">
-                    <img src="/images/tornillo.jpg" alt="Tornillo galvanizado">
-                    <h3>Tornillo autoperforante con arandela</h3>
-                    <p><strong>Medida:</strong> 2" x 1/4”</p>
-                    <p><strong>Material:</strong> Galvanizado</p>
-                    <p><strong>Precio:</strong> $500 COP unidad</p>
-                    <form th:action="@{'/carrito/agregar/1'}" method="post">
-                        <button type="submit" class="btn-agregar">🛒 Agregar al carrito</button>
-                    </form>
-                    <form th:action="@{'/carrito/comprar'}" method="post">
-                        <button type="submit" class="btn-comprar">💰 Comprar ahora</button>
-                    </form>
-                </div>
-                <div class="productos">
-                    <div th:each="producto : ${productos}" class="producto-card">
-                        <img th:src="@{'/img/' + ${producto.imagen}}" th:alt="${producto.nombre}">
-                        <h2 th:text="${producto.nombre}"></h2>
-                        <p th:text="'Precio: $' + ${producto.precio}"></p>
+        <main class="main-container">
+            <h1>Catálogo de Productos</h1>
 
-                        <form th:action="@{'/carrito/agregar/' + ${producto.id}}" method="post">
-                            <button type="submit">🛒 Agregar al carrito</button>
+            <div class="productos-grid">
+                <!-- PRODUCTOS -->
+                <div th:each="producto : ${productos}" class="producto-card">
+                    <div class="producto-imagen-container">
+                        <img th:if="${producto.imagen_url != null and producto.imagen_url != ''}"
+                             th:src="${producto.imagen_url}"
+                             th:alt="${producto.nombre}"
+                             class="producto-imagen"
+                             onerror="this.src='/images/default-product.jpg'">
+                        <div th:unless="${producto.imagen_url != null and producto.imagen_url != ''}" 
+                             class="no-imagen-producto">
+                            <span>🏠</span>
+                        </div>
+                    </div>
+
+                    <div class="producto-info">
+                        <h3 th:text="${producto.nombre}">Nombre</h3>
+                        <p class="producto-descripcion" th:text="${producto.descripcion}">Descripción</p>
+                        <!--p class="producto-precio">
+                            <strong th:text="${'$' + #numbers.formatDecimal(producto.precio, 1, 2, 'COMMA')}">Precio</strong>
+                        </p-->
+
+                        <form th:action="@{/carrito/agregar/{id}(id=${producto.id})}" method="post" class="agregar-form">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                            <input type="hidden" name="cantidad" value="1"/>
+                            <button type="submit" class="btn-agregar">
+                                <span class="icon">🛒</span> Agregar al carrito
+                            </button>
                         </form>
                     </div>
                 </div>
             </div>
-        </section>
-        <a class="wa-btn" href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC" target="_blank">
-            <img src="/img/nino.png" alt="WhatsApp">
+
+            <h2 class="seccion-titulo">Accesorios</h2>
+
+            <div class="productos-grid">
+                <!-- ACCESORIOS -->
+                <div th:each="accesorio : ${accesorios}" class="producto-card">
+                    <div class="producto-imagen-container">
+                        <img th:if="${accesorio.imagen_url != null and accesorio.imagen_url != ''}"
+                             th:src="${accesorio.imagen_url}"
+                             th:alt="${accesorio.nombre}"
+                             class="producto-imagen"
+                             onerror="this.src='/images/default-accesorio.jpg'">
+                        <div th:unless="${accesorio.imagen_url != null and accesorio.imagen_url != ''}" 
+                             class="no-imagen-producto">
+                            <span>🔧</span>
+                        </div>
+                    </div>
+
+                    <div class="producto-info">
+                        <h3 th:text="${accesorio.nombre}">Accesorio</h3>
+                        <p class="producto-color" th:if="${accesorio.color != null}">
+                            <strong>Color:</strong> <span th:text="${accesorio.color}"></span>
+                        </p>
+                        <p class="producto-descripcion" th:text="${accesorio.descripcion}">Descripción</p>
+                        <!--p class="producto-precio">
+                            <strong th:text="${'$' + #numbers.formatDecimal(accesorio.precio, 1, 2, 'COMMA')}">Precio</strong>
+                        </p-->
+
+                        <form th:action="@{/carrito/agregar/accesorio/{id}(id=${accesorio.id})}" method="post" class="agregar-form">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                            <input type="hidden" name="cantidad" value="1"/>
+                            <button type="submit" class="btn-agregar">
+                                <span class="icon">🛒</span> Agregar accesorio
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <a class="wa-btn"
+           href="https://wa.me/573213537875?text=Hola%20quiero%20cotizar%20tejas%20UPVC"
+           target="_blank"
+           rel="noopener">
+            <img th:src="@{/img/nino.png}" alt="WhatsApp">
         </a>
+
+        <footer th:replace="fragments/footer :: footer"></footer>
+
     </body>
 </html>

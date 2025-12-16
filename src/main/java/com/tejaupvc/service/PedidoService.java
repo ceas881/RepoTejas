@@ -40,12 +40,12 @@ public class PedidoService {
             detalle.setPedido(pedido);
 
             // recuperar el producto real desde la base de datos usando el ID del carrito
-            Producto producto = productoRepo.findById(item.getProductoId())
-                    .orElseThrow(() -> new RuntimeException("Producto no encontrado con id " + item.getProductoId()));
+            Producto producto = productoRepo.findById(item.getId())
+                    .orElseThrow(() -> new RuntimeException("Producto no encontrado con id " + item.getId()));
 
             detalle.setProducto(producto); // ahora usamos setProducto(), no setProductoId()
             detalle.setCantidad(item.getCantidad());
-            detalle.setPrecioUnitario(item.getPrecioUnitario());
+            double precioUnitario = item.getPrecio();
 
             detalleRepo.save(detalle);
         }

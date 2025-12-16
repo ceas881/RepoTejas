@@ -1,72 +1,80 @@
 package com.tejaupvc.controller;
 
 import com.tejaupvc.model.Producto;
-import com.tejaupvc.repository.ProductoRepository;
+import com.tejaupvc.model.Accesorio;
+import com.tejaupvc.service.CarritoService;
+import com.tejaupvc.service.ProductoService;
+import com.tejaupvc.service.AccesorioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.*;
 
 @Controller
 @RequestMapping("/carrito")
-@SessionAttributes("carrito")
 public class CarritoController {
-
+    
     @Autowired
-    private ProductoRepository productoRepo;
-
-    // 🛒 Inicializa el carrito de sesión
-    @ModelAttribute("carrito")
-    public Map<Long, Integer> crearCarrito() {
-        return new HashMap<>();
-    }
-
-    // 📦 Mostrar carrito
+    private CarritoService carritoService;
+    
+    @Autowired
+    private ProductoService productoService;
+    
+    @Autowired
+    private AccesorioService accesorioService;
+    
     @GetMapping
-    public String verCarrito(@ModelAttribute("carrito") Map<Long, Integer> carrito, Model model) {
-        List<Map<String, Object>> items = new ArrayList<>();
-        double total = 0;
-
-        for (var entry : carrito.entrySet()) {
-            Producto p = productoRepo.findById(entry.getKey()).orElse(null);
-            if (p != null) {
-                double subtotal = p.getPrecio() * entry.getValue();
-                total += subtotal;
-
-                Map<String, Object> item = new HashMap<>();
-                item.put("producto", p);
-                item.put("cantidad", entry.getValue());
-                item.put("subtotal", subtotal);
-                items.add(item);
-            }
-        }
-
-        model.addAttribute("items", items);
-        model.addAttribute("total", total);
+    public String verCarrito(Model model) {
+        model.addAttribute("items", carritoService.getItems());
+        model.addAttribute("total", carritoService.getTotal());
         return "carrito";
     }
-
-    // ➕ Agregar producto al carrito
+    
     @PostMapping("/agregar/{id}")
-    public String agregarAlCarrito(@PathVariable Long id,
-                                   @ModelAttribute("carrito") Map<Long, Integer> carrito) {
-        carrito.put(id, carrito.getOrDefault(id, 0) + 1);
+    public String agregarProducto(@PathVariable Long id,
+                                 @RequestParam(defaultValue = "1") int cantidad) {
+        Producto producto = productoService.getProductoById(id);
+        if (producto != null) {
+            carritoService.addItem(
+                producto.getId(),
+                producto.getNombre(),
+                cantidad,
+                producto.getPrecio(),
+                "producto",
+                producto.getImagen_url()  // ← Pasar imagen_url
+            );
+        }
         return "redirect:/catalogo";
     }
-
-    // 🧹 Vaciar carrito
-    @PostMapping("/vaciar")
-    public String vaciarCarrito(@ModelAttribute("carrito") Map<Long, Integer> carrito) {
-        carrito.clear();
+    
+    @PostMapping("/agregar/accesorio/{id}")
+    public String agregarAccesorio(@PathVariable Long id,
+                                  @RequestParam(defaultValue = "1") int cantidad) {
+        Accesorio accesorio = accesorioService.getAccesorioById(id);
+        if (accesorio != null) {
+            carritoService.addItem(
+                accesorio.getId(),
+                accesorio.getNombre(),
+                cantidad,
+                accesorio.getPrecio(),
+                "accesorio",
+                accesorio.getImagen_url(),  // ← Pasar imagen_url
+                accesorio.getColor() 
+            );
+        }
+        return "redirect:/catalogo";
+    }
+    
+    @PostMapping("/eliminar/{id}")
+    public String eliminarDelCarrito(@PathVariable Long id,
+                                    @RequestParam String tipo) {
+        carritoService.removeItem(id, tipo);
         return "redirect:/carrito";
     }
-
-    // 💳 Simular compra
-    @PostMapping("/comprar")
-    public String comprar(@ModelAttribute("carrito") Map<Long, Integer> carrito, Model model) {
-        carrito.clear();
-        model.addAttribute("mensaje", "¡Compra realizada con éxito!");
-        return "redirect:/catalogo";
+    
+    @PostMapping("/vaciar")
+    public String vaciarCarrito() {
+        carritoService.clear();
+        return "redirect:/carrito";
     }
 }

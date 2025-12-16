@@ -2,8 +2,10 @@ package com.tejaupvc.repository;
 
 import com.tejaupvc.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
-    List<Producto> findTop5ByOrderByIdAsc();
+    // Métodos personalizados si los necesitas
+    // List<Producto> findByDestacadoTrue();
 }
