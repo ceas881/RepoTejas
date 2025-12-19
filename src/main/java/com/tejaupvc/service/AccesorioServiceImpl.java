@@ -12,7 +12,7 @@ public class AccesorioServiceImpl implements AccesorioService {
     
     private final AccesorioRepository accesorioRepository;
     
-    @Autowired
+    @Autowired  // Puedes usar @Autowired en el constructor
     public AccesorioServiceImpl(AccesorioRepository accesorioRepository) {
         this.accesorioRepository = accesorioRepository;
     }
