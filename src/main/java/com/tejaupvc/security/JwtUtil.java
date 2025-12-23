@@ -6,21 +6,8 @@ package com.tejaupvc.security;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
-// Controladores
-import org.springframework.web.bind.annotation.*;
-// Servicios
-import org.springframework.stereotype.Service;
-// Inyección de dependencias
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -32,8 +19,12 @@ import io.jsonwebtoken.security.Keys;
  */
 @Component
 public class JwtUtil {
-  @Value("${security.jwt.secret}") private String secret;
-  @Value("${security.jwt.expiration}") private long expiration;
+
+    @Value("${security.jwt.secret}")
+    private String secret;
+
+    @Value("${security.jwt.expiration}")
+    private long expiration;
 
   public String generate(String username) {
     Date now = new Date();
