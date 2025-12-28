@@ -3,6 +3,7 @@ com\tejaupvc\controller\ProductoController.class
 com\tejaupvc\service\CarritoService.class
 com\tejaupvc\DistribuidoraTejaUpvcApplication.class
 com\tejaupvc\model\Cliente.class
+com\tejaupvc\config\MailConfig.class
 com\tejaupvc\security\JwtUtil.class
 com\tejaupvc\security\AuthRequest.class
 com\tejaupvc\model\MensajeContacto.class
