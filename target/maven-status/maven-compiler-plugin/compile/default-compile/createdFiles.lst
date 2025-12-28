@@ -32,6 +32,7 @@ com\tejaupvc\model\DetallePedido.class
 com\tejaupvc\repository\MensajeContactoRepository.class
 com\tejaupvc\service\AccesorioService.class
 com\tejaupvc\model\Pedido.class
+com\tejaupvc\config\SecurityConfig.class
 com\tejaupvc\security\AuthResponse.class
 com\tejaupvc\repository\AccesorioRepository.class
 com\tejaupvc\service\ProductoServiceImpl.class
