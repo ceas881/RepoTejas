@@ -13,10 +13,8 @@ public class CarritoSession {
 
     public void agregar(CarritoItem item) {
         String k = key(item.getId(), item.getTipo());
-
         if (items.containsKey(k)) {
-            CarritoItem existente = items.get(k);
-            existente.setCantidad(existente.getCantidad() + item.getCantidad());
+            items.get(k).setCantidad(items.get(k).getCantidad() + item.getCantidad());
         } else {
             items.put(k, item);
         }
@@ -32,5 +30,9 @@ public class CarritoSession {
 
     public Collection<CarritoItem> getItems() {
         return items.values();
+    }
+
+    public int getCantidadTotal() {
+        return items.values().stream().mapToInt(CarritoItem::getCantidad).sum();
     }
 }

@@ -26,14 +26,11 @@ public class CarritoItem {
     public Long getId() { return id; }
     public String getNombre() { return nombre; }
     public int getCantidad() { return cantidad; }
+    public void setCantidad(int cantidad) { this.cantidad = cantidad; }
     public double getPrecio() { return precio; }
     public String getTipo() { return tipo; }
     public String getImagen_url() { return imagen_url; }
     public String getColor() { return color; }
 
-    public void setCantidad(int cantidad) { this.cantidad = cantidad; }
-
-    public double getSubtotal() {
-        return cantidad * precio;
-    }
+    public double getSubtotal() { return cantidad * precio; }
 }

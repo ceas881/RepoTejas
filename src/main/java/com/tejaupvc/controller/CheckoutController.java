@@ -1,8 +1,8 @@
 package com.tejaupvc.controller;
 
-import com.tejaupvc.model.ItemCarrito;
-import com.tejaupvc.service.CarritoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.tejaupvc.session.CarritoSession;
+import jakarta.servlet.http.HttpSession;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,19 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CheckoutController {
 
-    @Autowired
-    private CarritoService carritoService;
-
     @GetMapping("/checkout")
-    public String checkout(Model model) {
-
-        // Cambiar CarritoItem → ItemCarrito
-        model.addAttribute("items", carritoService.getItems());
-        model.addAttribute("total", carritoService.getItems().stream()
-                //.mapToDouble(i -> i.getPrecio() * i.getCantidad())
-                //.sum()
-        );
-
+    public String checkout(Model model, HttpSession session) {
+        CarritoSession carrito = (CarritoSession) session.getAttribute("CARRITO");
+        model.addAttribute("items", carrito != null ? carrito.getItems() : List.of());
         return "checkout";
     }
 }
