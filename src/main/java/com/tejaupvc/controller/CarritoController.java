@@ -1,10 +1,9 @@
 package com.tejaupvc.controller;
 
-import com.tejaupvc.model.Producto;
-import com.tejaupvc.model.Accesorio;
-import com.tejaupvc.service.CarritoService;
-import com.tejaupvc.service.ProductoService;
-import com.tejaupvc.service.AccesorioService;
+import com.tejaupvc.model.*;
+import com.tejaupvc.session.CarritoSession;
+import com.tejaupvc.service.*;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,68 +12,83 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/carrito")
 public class CarritoController {
-    
-    @Autowired
-    private CarritoService carritoService;
-    
+
     @Autowired
     private ProductoService productoService;
-    
+
     @Autowired
     private AccesorioService accesorioService;
-    
+
+    private CarritoSession getCarrito(HttpSession session) {
+        CarritoSession carrito = (CarritoSession) session.getAttribute("CARRITO");
+        if (carrito == null) {
+            carrito = new CarritoSession();
+            session.setAttribute("CARRITO", carrito);
+        }
+        return carrito;
+    }
+
     @GetMapping
-    public String verCarrito(Model model) {
-        model.addAttribute("items", carritoService.getItems());
-        model.addAttribute("total", carritoService.getTotal());
+    public String verCarrito(Model model, HttpSession session) {
+        model.addAttribute("items", getCarrito(session).getItems());
         return "carrito";
     }
-    
-    @PostMapping("/agregar/{id}")
+
+    @PostMapping("/agregar/producto/{id}")
     public String agregarProducto(@PathVariable Long id,
-                                 @RequestParam(defaultValue = "1") int cantidad) {
-        Producto producto = productoService.getProductoById(id);
-        if (producto != null) {
-            carritoService.addItem(
-                producto.getId(),
-                producto.getNombre(),
+                                  @RequestParam(defaultValue = "1") int cantidad,
+                                  HttpSession session) {
+
+        Producto p = productoService.getProductoById(id);
+
+        if (p != null) {
+            CarritoItem item = new CarritoItem(
+                p.getId(),
+                p.getNombre(),
                 cantidad,
-                producto.getPrecio(),
+                p.getPrecio(),
                 "producto",
-                producto.getImagen_url()  // ← Pasar imagen_url
+                p.getImagen_url(),
+                null
             );
+            getCarrito(session).agregar(item);
         }
-        return "redirect:/catalogo";
-    }
-    
-    @PostMapping("/agregar/accesorio/{id}")
-    public String agregarAccesorio(@PathVariable Long id,
-                                  @RequestParam(defaultValue = "1") int cantidad) {
-        Accesorio accesorio = accesorioService.getAccesorioById(id);
-        if (accesorio != null) {
-            carritoService.addItem(
-                accesorio.getId(),
-                accesorio.getNombre(),
-                cantidad,
-                accesorio.getPrecio(),
-                "accesorio",
-                accesorio.getImagen_url(),  // ← Pasar imagen_url
-                accesorio.getColor() 
-            );
-        }
-        return "redirect:/catalogo";
-    }
-    
-    @PostMapping("/eliminar/{id}")
-    public String eliminarDelCarrito(@PathVariable Long id,
-                                    @RequestParam String tipo) {
-        carritoService.removeItem(id, tipo);
         return "redirect:/carrito";
     }
-    
+
+    @PostMapping("/agregar/accesorio/{id}")
+    public String agregarAccesorio(@PathVariable Long id,
+                                   @RequestParam(defaultValue = "1") int cantidad,
+                                   HttpSession session) {
+
+        Accesorio a = accesorioService.getAccesorioById(id);
+
+        if (a != null) {
+            CarritoItem item = new CarritoItem(
+                a.getId(),
+                a.getNombre(),
+                cantidad,
+                a.getPrecio(),
+                "accesorio",
+                a.getImagen_url(),
+                a.getColor()
+            );
+            getCarrito(session).agregar(item);
+        }
+        return "redirect:/carrito";
+    }
+
+    @PostMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable Long id,
+                           @RequestParam String tipo,
+                           HttpSession session) {
+        getCarrito(session).eliminar(id, tipo);
+        return "redirect:/carrito";
+    }
+
     @PostMapping("/vaciar")
-    public String vaciarCarrito() {
-        carritoService.clear();
+    public String vaciar(HttpSession session) {
+        getCarrito(session).vaciar();
         return "redirect:/carrito";
     }
 }

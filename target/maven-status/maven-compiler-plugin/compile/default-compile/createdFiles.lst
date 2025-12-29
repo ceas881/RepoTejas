@@ -24,6 +24,7 @@ com\tejaupvc\controller\PaginaController.class
 com\tejaupvc\model\ItemCarrito.class
 com\tejaupvc\controller\CarritoController.class
 com\tejaupvc\model\DetallePedido.class
+com\tejaupvc\session\CarritoSession.class
 com\tejaupvc\repository\MensajeContactoRepository.class
 com\tejaupvc\service\AccesorioService.class
 com\tejaupvc\model\Pedido.class
