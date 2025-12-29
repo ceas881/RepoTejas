@@ -1,11 +1,13 @@
 package com.tejaupvc.session;
 
 import com.tejaupvc.model.CarritoItem;
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CarritoSession {
 
-    private Map<String, CarritoItem> items = new LinkedHashMap<>();
+    private final Map<String, CarritoItem> items = new LinkedHashMap<>();
 
     private String key(Long id, String tipo) {
         return tipo + "_" + id;
@@ -13,8 +15,10 @@ public class CarritoSession {
 
     public void agregar(CarritoItem item) {
         String k = key(item.getId(), item.getTipo());
+
         if (items.containsKey(k)) {
-            items.get(k).setCantidad(items.get(k).getCantidad() + item.getCantidad());
+            CarritoItem existente = items.get(k);
+            existente.setCantidad(existente.getCantidad() + item.getCantidad());
         } else {
             items.put(k, item);
         }

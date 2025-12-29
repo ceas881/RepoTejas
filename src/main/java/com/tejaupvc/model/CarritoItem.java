@@ -32,5 +32,5 @@ public class CarritoItem {
     public String getImagen_url() { return imagen_url; }
     public String getColor() { return color; }
 
-    public double getSubtotal() { return cantidad * precio; }
+    public double getSubtotal() { return precio * cantidad; }
 }
