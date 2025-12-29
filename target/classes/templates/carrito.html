@@ -10,7 +10,7 @@
 
     <body>
 
-        <header th:replace="fragments/header :: header">
+        <header th:replace="~{fragments/header :: header}">
             <strong>Distribuidora de Teja UPVC</strong>
         </header>
 
@@ -132,7 +132,7 @@
             <img th:src="@{/img/nino.png}" alt="WhatsApp">
         </a>
 
-        <footer th:replace="fragments/footer :: footer"></footer>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
 
     </body>
 </html>
