@@ -3,37 +3,32 @@ package com.tejaupvc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 
 @Controller
 public class IndexController {
 
     @GetMapping("/")
-    public String index(Model model) {
-
-        File folder = new File("src/main/resources/static/images");
-
-        // Extensiones permitidas
-        File[] files = folder.listFiles((dir, name) ->
-                name.toLowerCase().endsWith(".jpg") ||
-                name.toLowerCase().endsWith(".jpeg") ||
-                name.toLowerCase().endsWith(".png") ||
-                name.toLowerCase().endsWith(".webp")
-        );
+    public String index(Model model) throws IOException {
 
         List<String> imagenes = new ArrayList<>();
 
-        if (files != null) {
-            for (File file : files) {
-                imagenes.add("/images/" + file.getName());
-            }
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+
+        Resource[] resources = resolver.getResources("classpath:/static/img/productos/*");
+
+        for (Resource resource : resources) {
+            String nombre = resource.getFilename();
+            imagenes.add("/img/productos/" + nombre);
         }
 
         model.addAttribute("imagenes", imagenes);
-
         return "index";
     }
 }

@@ -19,7 +19,6 @@
 
             <div class="carrito-actions">
                 <form th:action="@{/carrito/vaciar}" method="post" class="action-form">
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                     <button type="submit" class="btn-comprar">
                         <span class="icon">🗑️</span> Vaciar Carrito
                     </button>
@@ -79,7 +78,6 @@
 
                             <td class="accion-cell">
                                 <form th:action="@{'/carrito/eliminar/' + ${item.id}}" method="post" class="eliminar-form">
-                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                                     <input type="hidden" name="tipo" th:value="${item.tipo}"/>
                                     <button type="submit" class="btn-eliminar" title="Eliminar del carrito">
                                         <span class="icon">🗑️</span> Eliminar
