@@ -9,7 +9,9 @@ com\tejaupvc\service\AccesorioServiceImpl.class
 com\tejaupvc\repository\ProductoRepository.class
 com\tejaupvc\controller\IndexController.class
 com\tejaupvc\model\Accesorio.class
+com\tejaupvc\controller\SitemapController.class
 com\tejaupvc\controller\CheckoutController.class
+com\tejaupvc\config\DomainRedirectFilter.class
 com\tejaupvc\repository\PedidoRepository.class
 com\tejaupvc\service\PedidoService.class
 com\tejaupvc\controller\ClienteController.class
