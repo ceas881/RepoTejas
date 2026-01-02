@@ -10,6 +10,7 @@ C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\c
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\model\MensajeContacto.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\controller\CheckoutController.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\controller\SitemapController.java
+C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\config\CanonicalRedirectFilter.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\service\AccesorioService.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\controller\PingController.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\repository\PedidoRepository.java
@@ -21,6 +22,7 @@ C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\c
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\repository\DetallePedidoRepository.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\config\MailConfig.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\model\Producto.java
+C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\config\CanonicalRedirectConfig.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\controller\IndexController.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\DistribuidoraTejaUpvcApplication.java
 C:\Users\AMAF\Documents\NetBeansProjects\distribuidora-teja-upvc\src\main\java\com\tejaupvc\service\PedidoService.java
