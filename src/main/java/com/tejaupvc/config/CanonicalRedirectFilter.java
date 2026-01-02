@@ -4,30 +4,36 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 
 @Component
 public class CanonicalRedirectFilter implements Filter {
 
+    private static final String CANONICAL_DOMAIN = "https://tejaupvc.com";
+
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-        HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) res;
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
 
-        String host = request.getServerName();
+        String host = req.getHeader("Host");
 
-        if (host.startsWith("www.")) {
-            String newUrl = "https://" + host.substring(4) + request.getRequestURI();
-            if (request.getQueryString() != null) {
-                newUrl += "?" + request.getQueryString();
+        if (host != null && (
+                host.equalsIgnoreCase("www.tejaupvc.com") ||
+                host.equalsIgnoreCase("tejaupvc.onrender.com")
+        )) {
+            String newUrl = CANONICAL_DOMAIN + req.getRequestURI();
+            if (req.getQueryString() != null) {
+                newUrl += "?" + req.getQueryString();
             }
-            response.setStatus(301);
-            response.setHeader("Location", newUrl);
+            res.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+            res.setHeader("Location", newUrl);
             return;
         }
 
-        chain.doFilter(req, res);
+        chain.doFilter(request, response);
     }
 }
