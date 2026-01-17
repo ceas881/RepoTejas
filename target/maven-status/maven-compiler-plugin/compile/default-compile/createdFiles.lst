@@ -31,7 +31,6 @@ com\tejaupvc\config\CanonicalRedirectConfig.class
 com\tejaupvc\service\AccesorioService.class
 com\tejaupvc\model\Pedido.class
 com\tejaupvc\repository\AccesorioRepository.class
-com\tejaupvc\config\CanonicalRedirectFilter.class
 com\tejaupvc\service\ProductoServiceImpl.class
 com\tejaupvc\repository\DetallePedidoRepository.class
 com\tejaupvc\controller\PingController.class
